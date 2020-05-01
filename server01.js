@@ -13,15 +13,14 @@ app.listen(PORT, function () {
 //Routes
 //_____________________________________________________
 app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "notes.html"));
-});
-
-app.get("/reservation", function (req, res) {
-    res.sendFile(path.join(__dirname, "reservation.html"));
+    res.sendFile(path.join(__dirname, "./public/notes.html"));
 });
 
 // Wild card
 app.get("/*", function (req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
-})
-}
+    res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
+app.get("/api/notes", function (req, res) {
+    res.sendFile(path.join(__dirname, "./db/db.json"));
+});

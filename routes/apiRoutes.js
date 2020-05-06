@@ -1,4 +1,5 @@
 var data = require("../db/db.json");
+const fs = require("fs");
 
 module.exports = function(app) {
     
@@ -7,7 +8,16 @@ module.exports = function(app) {
     });
 
     app.post("/api/notes", function (req, res) {
-        data.push(req.body);
-        res.json(data);
+        let newData = res.body
+        fs.appendFile('../db/db.json', newData, function (err) {
+            if (err) throw err;
+            console.log('Updated!');
+        });
+        data.push(newData);
+        res.json([body]);
     });
+
+    app.delete("/api/notes/:id"), function (req, res){
+        res.send
+    }
 }

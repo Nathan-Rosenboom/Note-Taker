@@ -8,13 +8,13 @@ module.exports = function(app) {
     });
 
     app.post("/api/notes", function (req, res) {
-        let newData = res.body
-        fs.appendFile('../db/db.json', newData, function (err) {
+        let newNote = res.body
+        fs.appendFile('./db/db.json', newNote, function (err) {
             if (err) throw err;
             console.log('Updated!');
         });
-        data.push(newData);
-        res.json([body]);
+        data.push(newNote);
+        res.json(newNote);
     });
 
     app.delete("/api/notes/:id"), function (req, res){
